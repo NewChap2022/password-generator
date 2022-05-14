@@ -1,11 +1,24 @@
+const lowerCase = "abcdefghijklmnopqrstuvwyz";
+const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numeric = "0123456789";
+const specialCharacter = " !\"\#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+
 // Assignment code here
 function generatePassword() {
   window.alert("Welcome to use Password Generator! Please decide your requirements for your password.");
 
-  var minLength = parseInt(window.prompt("What is the minimum length of characters you want to set for your password?"));
+  var minLength = ""
+  // ask for minimum length for password
+  while (minLength === "" || isNaN(minLength)) {
+    minLength = parseInt(window.prompt("What is the minimum length of characters you want to set for your password? \nPlease make sure you enter the numerals."));
+  }
   console.log("The minimum length of password is " + minLength);
 
-  var maxLength = parseInt(window.prompt("What is the maximum length of characters you want to set for your password?"));
+  // ask for maximum length for password
+  var maxLength = ""
+  while (maxLength === "" || isNaN(maxLength) || maxLength < minLength) {
+    maxLength = parseInt(window.prompt("What is the maximum length of characters you want to set for your password? \nPlease make sure you enter the numerals and the maximum length is larger or equal to minimum length."));
+  }
   console.log("The maximum length of password is " + maxLength);
 
   var characters = "";
@@ -13,31 +26,23 @@ function generatePassword() {
   while (characters === "" || characters === null) {
     var characterSelect = window.confirm("Do you want to use lowercase for your password?")
     if (characterSelect) {
-      characters = "abcdefghijklmnopqrstuvwyz";
-    } else {
-      characters = "";
-    }
+      characters = lowerCase;
+    } 
 
     characterSelect = window.confirm("Do you want to use uppercase for your password?")
     if (characterSelect) {
-      characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    } else {
-      characters += "";
-    }
+      characters += upperCase;
+    } 
 
     characterSelect = window.confirm("Do you want to use numeric for your password?")
     if (characterSelect) {
-      characters += "01234566789";
-    } else {
-      characters += "";
-    }
+      characters += numeric;
+    } 
 
     characterSelect = window.confirm("Do you want to use special characters for your password?")
     if (characterSelect) {
-      characters += " !\"\#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-    } else {
-      characters += "";
-    }
+      characters += specialCharacter;
+    } 
 
     if (characters === "" || characters === null) {
       window.alert("You need to choose at lease one type of characters to generate password!")
