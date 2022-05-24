@@ -4,7 +4,7 @@
 create an application that a user generate a random password based on selected criteria.
 
 ## Criteria
-- [x] Can choose minimum length and maximum length of the password.
+- [x] Can choose a length between minimum length of 8 characters and maximum length of 128 characters of the password.
 - [x] Can choose whether or not to include lowercase, uppercase, numeric, and/or special characters
 - [x] At least one of the character type should be selected
 - [x] A password will be generated to meet the selected criteria
